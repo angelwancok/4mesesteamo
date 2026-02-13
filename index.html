@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo Lara</title>
+    <link rel="shortcut icon" href="Imagem/coraçaum.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --accent-red: #ff0040;
+            --code-green: #3f7f5f;
+            --code-blue: #2a36ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-black) !important;
+            color: #dcdcdc;
+            overflow: hidden;
+            font-family: "Consolas", "Monaco", monospace;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Overlay de Abertura */
+        #loading-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--primary-black);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1.5s ease;
+        }
+
+        .loading-heart {
+            font-size: 4rem;
+            animation: pulse 1s infinite;
+            color: var(--accent-red);
+            filter: drop-shadow(0 0 20px var(--accent-red));
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Container Principal */
+        #mainDiv {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+        }
+
+        #code {
+            width: 100%;
+            max-width: 600px;
+            color: #dcdcdc !important;
+            font-size: 18px !important;
+            line-height: 1.6;
+        }
+
+        .comments { color: var(--code-green) !important; }
+        .keyword { color: #cc7832 !important; font-weight: bold; }
+        #icon {
+            color: var(--accent-red);
+            font-size: 48px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading-overlay">
+        <div class="loading-heart">❤️</div>
+    </div>
+
+    <div id="mainDiv">
+        <div id="content">
+            <div id="code">
+                <span class="comments">/**</span><br />
+                <span class="comments">* PARA MINHA LARA</span><br />
+                <span class="comments">*/</span><br />
+                19/02/2026 <br />
+                Completamos mais um ciclo, e olhar para trás me faz ter certeza de que cada passo valeu a pena.<br />
+                <span class="comments">// 4 meses de uma vida inteira!. // </span><br />
+                Entrar na sua vida, conhecer seus pais, seus amigos e mergulhar no seu mundo foi o melhor presente que eu poderia receber. Estar com você é, sem dúvida, a coisa mais incrível da minha rotina. Eu nunca me senti tão apaixonado e tão entregue a alguém como sou a você<br />
+                <span class="comments">// Você é meu sonho realizado.</span><br />
+                Eu quero você para sempre. Quero o nosso casamento, a nossa casa e a alegria de ver a gente realizando, um ao lado do outro, cada sonho que planejamos. Nada no mundo é maior do que o meu amor por você. Estou disposto a tudo para te ver feliz, te proteger e construímos nosso futuro juntos!<br />
+                Sei que nem todos os dias são fáceis, mas quero que você saiba...<br />
+                Eu escolho você hoje, amanhã e em cada obstáculo que surgir, porque o que temos é inabalável.<br />
+                <br><br>
+                <span class="keyword">"Se for para estar ao seu lado a vida inteira, qualquer espera vale a pena, porque o tempo é pequeno perto da nossa eternidade."</span><br />
+                <i>- De: Angel Wancok, Para O AMOR DA MINHA VIDA: LARA!</i><br />
+                <br><br>
+                Agora, clica no coração:<br />
+                <br>
+                <span id="heartspan">
+                    <a href="index2.html"><i class="fas fa-heart" id="icon"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Função Typewriter customizada
+        $.fn.typewriter = function() {
+            this.each(function() {
+                var $ele = $(this), str = $ele.html(), progress = 0;
+                $ele.html('');
+                var timer = setInterval(function() {
+                    var current = str.substr(progress, 1);
+                    if (current == '<') {
+                        progress = str.indexOf('>', progress) + 1;
+                    } else {
+                        progress++;
+                    }
+                    $ele.html(str.substring(0, progress) + (progress < str.length ? '_' : ''));
+                    if (progress >= str.length) {
+                        clearInterval(timer);
+                    }
+                }, 50); // Velocidade da digitação (ms)
+            });
+            return this;
+        };
+
+        $(window).on('load', function() {
+            setTimeout(function() {
+                // 1. Inicia o fade out do coração de abertura
+                $('#loading-overlay').css('opacity', '0');
+                
+                setTimeout(function() {
+                    $('#loading-overlay').hide();
+                    
+                    // 2. Mostra a div principal
+                    $('#mainDiv').show(); 
+                    
+                    // 3. Inicia o efeito de digitação no texto
+                    $('#code').typewriter();
+                    
+                }, 1500); // Tempo para o fade out terminar
+            }, 3000); // Tempo que o coração fica pulsando no início
+        });
+    </script>
+</body>
+</html>
